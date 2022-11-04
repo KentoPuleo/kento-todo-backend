@@ -1,0 +1,16 @@
+http://localhost:3000/list
+Accept: aplication/jason
+
+<> 2022-10-28-httpsrequest.json
+
+###
+
+GET http://localhost:3000/app
+
+###
+
+POST http://localhost:3000/app/bye
+
+###
+
+GET http://localhost:3000/app/asdf
