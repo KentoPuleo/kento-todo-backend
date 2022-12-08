@@ -6,5 +6,4 @@ export class CreatTaskDto {
     status: boolean;
     @IsString()
     name: string;
-
 }

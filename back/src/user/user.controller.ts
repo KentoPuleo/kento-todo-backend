@@ -1,14 +1,27 @@
-import {Body, Controller, Get, Post} from '@nestjs/common';
-import { AppService } from '../app.service';
+import {Body, Controller, Get, Post, Param, Patch, Query, Delete} from '@nestjs/common';
 import { CreatUserDto } from "./creat-user.dto";
+import { UserService } from "./user.service";
 
-@Controller('/users')
+@Controller('/user')
 export class UserController {
-    constructor(private readonly appService: AppService) {}
+    constructor(private userService: UserService) {}
+    @Post('/signup')
+    createUser(@Body() body: CreatUserDto){
+        this.userService.create(body.name, body.password, body.email)
+    }
 
-    @Post()
-    addUserToList(@Body() body: CreatUserDto){
-        console.log(body);
-        return 'by there 2!';
+    @Get('/:id')
+    findUser(@Param('id') id: string){
+        return this.userService.findOne(parseInt(id));
+    }
+
+    @Get()
+    findallUser(@Query('email') email: string){
+        return this.userService.find(email)
+    }
+
+    @Delete('/:id')
+    removeUser(@Param('id') id: string){
+        return this.userService.remove(parseInt(id));
     }
 }
