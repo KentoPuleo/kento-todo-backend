@@ -1,11 +1,11 @@
-import {IsString, IsBoolean, IsOptional} from "class-validator";
+import {IsString, IsBoolean, IsOptional, IsNumber} from "class-validator";
 
 export class UpdateListDto{
-    @IsString()
+    @IsNumber()
     @IsOptional()
-    name: string
+    id: number
 
     @IsBoolean()
-    @IsString()
+    @IsOptional()
     status: boolean
 }

@@ -8,13 +8,19 @@ import { User } from "./user/user.entity";
 import {List} from "./list/list.entity";
 
 @Module({
-  imports: [ListModule, UserModule,
+  imports: [
     TypeOrmModule.forRoot({
-    type: "sqlite",
-    database: 'db.sqlite',
-    entities: [User, List],
-    synchronize: true
-  })],
+      type: 'mysql',
+      host: 'localhost',
+      port: 5555,
+      username: 'root',
+      password: '',
+      database: 'mydb',
+      entities: [List,User],
+      autoLoadEntities: true,
+      synchronize: true,
+  }),ListModule, UserModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
